@@ -10,3 +10,9 @@ python=3.10
 2. Use shoot_for_reconstruct.ipynb to take photos for reconstruction.
 3. Use extrinsic_calib.ipynb to get the intrinsic matrix.
 4. Use extrainsic_calib.ipynb to get the relative pose and do 3d reconstruction.(Only simple overlap now with manual scale)
+
+
+
+utils:
+- shoot
+- 
