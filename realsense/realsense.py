@@ -36,7 +36,7 @@ class Camera:
         depth_image = np.asanyarray(depth_frame.get_data())
         return color_image, depth_image
 
-    def get_intrinsics(self):
+    def get_intrinsics_matrix(self):
         profile = self.pipeline.get_active_profile()
         rgb_intrinsics_raw = profile.get_stream(rs.stream.color).as_video_stream_profile().get_intrinsics()
         # To a matrix
@@ -50,7 +50,13 @@ class Camera:
                                    [0, depth_intrinsics_raw.fy, depth_intrinsics_raw.ppy],
                                    [0, 0, 1]])
         
-        return rgb_intrinsics, depth_intrinsics
+        return rgb_intrinsics, rgb_intrinsics_raw.coeffs, depth_intrinsics, depth_intrinsics_raw.coeffs
+    
+    def get_intrinsics_raw(self):
+        profile = self.pipeline.get_active_profile()
+        rgb_intrinsics = profile.get_stream(rs.stream.color).as_video_stream_profile().get_intrinsics()
+        depth_intrinsics = profile.get_stream(rs.stream.depth).as_video_stream_profile().get_intrinsics()
+        return rgb_intrinsics, rgb_intrinsics.coeffs, depth_intrinsics, depth_intrinsics.coeffs
     
     def get_depth_scale(self):
         profile = self.pipeline.get_active_profile()
@@ -60,7 +66,7 @@ class Camera:
     def get_pointcloud(self, depth_trunc):
         color_image, depth_image = self.shoot()
         # get intrinsic parameters
-        rgb_intrinsics, depth_intrinsics = self.get_intrinsics()
+        rgb_intrinsics, rgb_coeffs, depth_intrinsics, depth_coeffs = self.get_intrinsics_matrix()
         depth_scale = self.get_depth_scale()
 
         rgbd_image = o3d.geometry.RGBDImage.create_from_color_and_depth(
@@ -89,3 +95,11 @@ class Camera:
 
     def stop(self):
         self.pipeline.stop()
+
+
+def get_devices():
+    ctx = rs.context()
+    devices = ctx.query_devices()
+    device_serials = [device.get_info(rs.camera_info.serial_number) for device in devices]
+    device_serials.sort()
+    return device_serials

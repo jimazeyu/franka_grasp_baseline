@@ -4,15 +4,23 @@ Table top manipulation calibration between the robot arm, the fixed cameras and 
 ## Install
 python=3.10
 
+## harwares
+readlsense 405/435(tested), others may also work
+
+franka emika research 3
+
 ## Usage
 
-1. Use shoot_for_calib.ipynb to take photos and for calibration.
-2. Use shoot_for_reconstruct.ipynb to take photos for reconstruction.
-3. Use extrinsic_calib.ipynb to get the intrinsic matrix.
-4. Use extrainsic_calib.ipynb to get the relative pose and do 3d reconstruction.(Only simple overlap now with manual scale)
+https://calib.io/pages/camera-calibration-pattern-generator
 
 
+refer to the examples.
 
-utils:
-- shoot
-- 
+hand_in_eye dataset is for hand in eye
+
+intrinsics also, if you wanna further calibrate your intrinsics, overall the data from realsense is good enough
+
+## TODO
+- Hand to eye
+- Graspnet
+- Automatic data collection with spherical view points.

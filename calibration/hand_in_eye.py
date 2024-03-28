@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 class HandinEyeCalibrator:
-    def __init__(self, camera_matrix, dist_coeffs, charuco_dict, board):
-        self.camera_matrix = camera_matrix
+    def __init__(self, intrinsics_matrix, dist_coeffs, charuco_dict, board):
+        self.intrinsics_matrix = intrinsics_matrix
         self.dist_coeffs = dist_coeffs
         self.charuco_dict = charuco_dict
         self.board = board
@@ -15,7 +15,7 @@ class HandinEyeCalibrator:
         if len(corners) > 0:
             ret, charuco_corners, charuco_ids = cv2.aruco.interpolateCornersCharuco(corners, ids, gray, self.board)
             if charuco_ids is not None and len(charuco_corners) > 3:
-                valid, rvec, tvec = cv2.aruco.estimatePoseCharucoBoard(charuco_corners, charuco_ids, self.board, self.camera_matrix, self.dist_coeffs, None, None)
+                valid, rvec, tvec = cv2.aruco.estimatePoseCharucoBoard(charuco_corners, charuco_ids, self.board, self.intrinsics_matrix, self.dist_coeffs, None, None)
                 if valid:
                     return rvec, tvec
         return None, None
