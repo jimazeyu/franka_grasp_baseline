@@ -1,0 +1,12 @@
+# ninja log v5
+2	11840	1708138561911918523	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/sampling_gpu.o	ffadee0ce1fbc6b0
+1	11909	1708138561983917801	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/group_points_gpu.o	2ac3701eea12e066
+0	11911	1708138561987917761	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/ball_query_gpu.o	e23b91a975530da5
+1	12152	1708138562227915355	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/interpolate_gpu.o	4563eb516df2266c
+1	14519	1708138564595891630	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/cylinder_query_gpu.o	217764bff6c1576d
+1	19225	1708138569287844685	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/interpolate.o	56e905b20cb13784
+0	19542	1708138569607841487	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/bindings.o	7575193bfcb39506
+2	19580	1708138569647841087	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/sampling.o	8d844295d8f92b57
+1	19601	1708138569659840968	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/group_points.o	7d8ca2fdc98d1be2
+0	20758	1708138570823829336	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/ball_query.o	ea820fcb221e3fee
+1	21974	1708138572043817152	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-38/_ext_src/src/cylinder_query.o	24714adea9985582

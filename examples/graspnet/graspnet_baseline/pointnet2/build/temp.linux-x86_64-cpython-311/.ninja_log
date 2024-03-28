@@ -1,0 +1,12 @@
+# ninja log v5
+1	11082	1708142692163820327	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/ball_query_gpu.o	ecfaf1e6f8255924
+1	11202	1708142692283821210	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/cylinder_query_gpu.o	35596f5da01c72bc
+3	11213	1708142692295821299	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/sampling_gpu.o	3e98f578b244816e
+2	12053	1708142693135827483	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/group_points_gpu.o	133838823c9a23d2
+0	12512	1708142693587830812	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/ball_query.o	f9f350c84c9f3fc4
+3	13074	1708142694155834996	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/sampling.o	caa46f8606c225ce
+1	13120	1708142694199835320	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/bindings.o	9a01028dccf1b701
+2	13281	1708142694359836500	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/interpolate.o	6f1e2900c762b76
+1	13966	1708142695047841570	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/cylinder_query.o	fbc7477dd4604ad5
+2	15445	1708142696527852489	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/interpolate_gpu.o	a718decea1eae345
+2	16446	1708142697527859873	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/pointnet2/build/temp.linux-x86_64-cpython-311/_ext_src/src/group_points.o	893f43fc5d86b2ef

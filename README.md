@@ -22,5 +22,4 @@ intrinsics also, if you wanna further calibrate your intrinsics, overall the dat
 
 ## TODO
 - Hand to eye
-- Graspnet
 - Automatic data collection with spherical view points.

@@ -1,0 +1,4 @@
+# ninja log v5
+0	548	1708138501220534689	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/knn/build/temp.linux-x86_64-cpython-38/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/knn/src/cuda/knn.o	c7574afe4a1fdbc0
+0	14183	1708138514848394949	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/knn/build/temp.linux-x86_64-cpython-38/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/knn/src/cpu/knn_cpu.o	e436f1c3c5f6acb4
+1	14376	1708138515040392986	/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/knn/build/temp.linux-x86_64-cpython-38/home/jimazeyu/Desktop/ws/test_github/lerftogo/robot_lerf/graspnet_baseline/knn/src/vision.o	178954ab34378622
