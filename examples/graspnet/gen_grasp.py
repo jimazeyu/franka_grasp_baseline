@@ -1,5 +1,6 @@
 import viser
 import viser.transforms as tf
+from viser.extras import ViserUrdf
 
 import os
 
@@ -20,6 +21,10 @@ from robot_lerf.capture_utils import _generate_hemi
 from typing import List
 
 import torch
+
+import numpy as onp
+
+from pathlib import Path
 
 floor_height = 0.01
 table_center = np.array((.45,0,0.01))
@@ -123,6 +128,94 @@ def main() -> None:
         gui_generate_grasp= server.add_gui_button("Generate Grasps")
 
         gui_load_grasp = server.add_gui_button("Load Grasp")
+
+
+    with server.add_gui_folder("Panda") as folder:
+        # add arm model
+        urdf = ViserUrdf(server, urdf_path = Path("./examples/graspnet/panda/panda.urdf"), root_node_name = "/panda_base")
+
+        # Create joint angle sliders.
+        gui_joints: List[viser.GuiInputHandle[float]] = []
+        initial_angles: List[float] = []
+        for joint_name, (lower, upper) in urdf.get_actuated_joint_limits().items():
+            lower = lower if lower is not None else -onp.pi
+            upper = upper if upper is not None else onp.pi
+
+            initial_angle = 0.0 if lower < 0 and upper > 0 else (lower + upper) / 2.0
+            slider = server.add_gui_slider(
+                label=joint_name,
+                min=lower,
+                max=upper,
+                step=1e-3,
+                initial_value=initial_angle,
+            )
+            slider.on_update(  # When sliders move, we update the URDF configuration.
+                lambda _: urdf.update_cfg(onp.array([gui.value for gui in gui_joints]))
+            )
+
+            gui_joints.append(slider)
+            initial_angles.append(initial_angle)
+
+        # Chooese grasp number
+        gui_grasp_number = server.add_gui_text(
+            "Grasp Number",
+            initial_value="0",
+        )
+
+        # Create grasp button.
+        arm_grasp_button = server.add_gui_button("Grasp")
+
+        # Create joint reset button.
+        arm_reset_button = server.add_gui_button("Reset")
+
+        # Apply initial joint angles.
+        urdf.update_cfg(onp.array([gui.value for gui in gui_joints]))
+
+    @arm_grasp_button.on_click
+    def _(_) -> None:
+        if grasps is None:
+            print("Grasps not loaded")
+            return
+        grasp_number = int(gui_grasp_number.value)
+        if grasp_number >= len(grasps) or grasp_number < 0:
+            print("Grasp number out of range")
+            return
+        grasp = grasps[grasp_number]
+        print(f"Grasp {grasp_number} selected")
+
+        for i, grasp in enumerate(grasps):
+            if i != grasp_number:
+                server.add_frame(
+                    name=f'/grasps_{i}',
+                    wxyz=tf.SO3.from_matrix(grasp.rotation_matrix).wxyz,
+                    position=grasp.translation,
+                    show_axes=False,
+                    visible=False
+                )
+        
+        # calculate IK
+        import roboticstoolbox as rtb
+        from spatialmath import SE3
+        import transforms3d.euler as euler
+        import numpy as np
+
+        robot = rtb.models.Panda()
+
+        roll, pitch, yaw = euler.mat2euler(grasps[grasp_number].rotation_matrix)
+        Tep = SE3.Trans(grasps[grasp_number].translation) * SE3.RPY([roll, pitch, yaw]) * SE3.RPY([np.pi/2, np.pi/2, np.pi/2])
+        # Tep = SE3.Trans(grasps[grasp_number].translation)
+        print("Tep", Tep)
+        sol = robot.ik_LM(Tep)         # solve IK
+        print("joint angles", sol[0])
+
+        for i, angle in enumerate(sol[0]):
+            gui_joints[i].value = angle
+
+    @arm_reset_button.on_click
+    def _(_):
+        for g, initial_angle in zip(gui_joints, initial_angles):
+            g.value = initial_angle
+
 
     @gui_load_pointcloud.on_click
     def _(_) -> None:
