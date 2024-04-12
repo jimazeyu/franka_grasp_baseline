@@ -48,5 +48,5 @@ Additional notes:
 </div>
 
 ## TODO
-- Hand to eye calibration based on a mark on the arm.
+- Hand to eye calibration with a mark on the arm.
 - Automatic data collection with spherical view points.
